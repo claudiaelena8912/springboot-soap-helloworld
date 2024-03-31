@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="405cd71e-f383-4131-a209-49fcf63dcc22" activeEnvironment="Default" name="tasks" soapui-version="5.7.2" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="714f9834-6122-4921-a797-0491d2618e3c" wsaVersion="NONE" name="TasksPortSoap11" type="wsdl" bindingName="{http://soap.helloworld.com/gen}TasksPortSoap11" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/ws/tasks.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/ws/tasks.wsdl"><con:part><con:url>http://localhost:8080/ws/tasks.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://soap.helloworld.com/gen" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://soap.helloworld.com/tasks/gen" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://soap.helloworld.com/gen">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://soap.helloworld.com/tasks/gen" xmlns:tns="http://soap.helloworld.com/tasks/gen" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="GetTaskRequest">
+        <xs:complexType>
+          <xs:sequence></xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetTaskResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="taskDetails" type="tns:TaskDetailsList"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="AddTaskRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="taskDetail" type="tns:TaskDetail"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="AddTaskResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CompletedTaskRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CompletedTaskResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DeleteTaskRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DeleteTaskResponse">
+        <xs:complexType>
+          <xs:sequence></xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="TaskDetail">
+        <xs:sequence>
+          <xs:element name="id" type="xs:long"/>
+          <xs:element name="title" type="xs:string"/>
+          <xs:element name="description" type="xs:string"/>
+          <xs:element name="completed" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="TaskDetailsList">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="taskDetail" type="tns:TaskDetail"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="CompletedTaskResponse">
+    <wsdl:part element="sch:CompletedTaskResponse" name="CompletedTaskResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AddTaskRequest">
+    <wsdl:part element="sch:AddTaskRequest" name="AddTaskRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DeleteTaskRequest">
+    <wsdl:part element="sch:DeleteTaskRequest" name="DeleteTaskRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DeleteTaskResponse">
+    <wsdl:part element="sch:DeleteTaskResponse" name="DeleteTaskResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetTaskResponse">
+    <wsdl:part element="sch:GetTaskResponse" name="GetTaskResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AddTaskResponse">
+    <wsdl:part element="sch:AddTaskResponse" name="AddTaskResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CompletedTaskRequest">
+    <wsdl:part element="sch:CompletedTaskRequest" name="CompletedTaskRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetTaskRequest">
+    <wsdl:part element="sch:GetTaskRequest" name="GetTaskRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="TasksPort">
+    <wsdl:operation name="CompletedTask">
+      <wsdl:input message="tns:CompletedTaskRequest" name="CompletedTaskRequest"></wsdl:input>
+      <wsdl:output message="tns:CompletedTaskResponse" name="CompletedTaskResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddTask">
+      <wsdl:input message="tns:AddTaskRequest" name="AddTaskRequest"></wsdl:input>
+      <wsdl:output message="tns:AddTaskResponse" name="AddTaskResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTask">
+      <wsdl:input message="tns:DeleteTaskRequest" name="DeleteTaskRequest"></wsdl:input>
+      <wsdl:output message="tns:DeleteTaskResponse" name="DeleteTaskResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTask">
+      <wsdl:input message="tns:GetTaskRequest" name="GetTaskRequest"></wsdl:input>
+      <wsdl:output message="tns:GetTaskResponse" name="GetTaskResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TasksPortSoap11" type="tns:TasksPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="CompletedTask">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="CompletedTaskRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="CompletedTaskResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddTask">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="AddTaskRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="AddTaskResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTask">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="DeleteTaskRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="DeleteTaskResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTask">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="GetTaskRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetTaskResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TasksPortService">
+    <wsdl:port binding="tns:TasksPortSoap11" name="TasksPortSoap11">
+      <soap:address location="http://localhost:8080/ws"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/ws</con:endpoint></con:endpoints><con:operation id="0d71a02c-f06a-43e6-8195-8184571f09fe" isOneWay="false" action="" name="AddTask" bindingOperationName="AddTask" type="Request-Response" outputName="AddTaskResponse" inputName="AddTaskRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="901297ef-7d15-4de0-87ff-07972e7166c5" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gen="http://soap.helloworld.com/tasks/gen">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <gen:AddTaskRequest>\r
+         <gen:taskDetail>\r
+            <gen:id></gen:id>\r
+            <gen:title>Hello World Spring Boot</gen:title>\r
+            <gen:description>Hacer el hello world de un ws SOAP</gen:description>\r
+            <gen:completed>FALSE</gen:completed>\r
+         </gen:taskDetail>\r
+      </gen:AddTaskRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.helloworld.com/gen/TasksPort/AddTaskRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="2616a3fb-1648-4dca-a478-cc8baaa5df52" isOneWay="false" action="" name="CompletedTask" bindingOperationName="CompletedTask" type="Request-Response" outputName="CompletedTaskResponse" inputName="CompletedTaskRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="9fbd471d-e1d4-4702-ac9d-3298595f4a25" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gen="http://soap.helloworld.com/tasks/gen">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <gen:CompletedTaskRequest>\r
+         <gen:id>7</gen:id>\r
+      </gen:CompletedTaskRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.helloworld.com/gen/TasksPort/CompletedTaskRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="4ad949c6-b771-48bf-8327-d8d22d86d2e9" isOneWay="false" action="" name="DeleteTask" bindingOperationName="DeleteTask" type="Request-Response" outputName="DeleteTaskResponse" inputName="DeleteTaskRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="c4e82cf6-3150-4832-8907-6aca63c6d347" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gen="http://soap.helloworld.com/tasks/gen">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <gen:DeleteTaskRequest>\r
+         <gen:id>2</gen:id>\r
+      </gen:DeleteTaskRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.helloworld.com/gen/TasksPort/DeleteTaskRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="ad0b1fcb-7c36-4c8a-94f4-cc06cd41b2bb" isOneWay="false" action="" name="GetTask" bindingOperationName="GetTask" type="Request-Response" outputName="GetTaskResponse" inputName="GetTaskRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="471e4d0c-8935-4c29-bfca-0dbfb246de4c" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gen="http://soap.helloworld.com/tasks/gen">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <gen:GetTaskRequest/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.helloworld.com/gen/TasksPort/GetTaskRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

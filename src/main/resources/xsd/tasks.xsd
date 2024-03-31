@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"	xmlns:tns="http://soap.helloworld.com/tasks/gen"	
+targetNamespace="http://soap.helloworld.com/tasks/gen"	elementFormDefault="qualified">
+
+	<xs:element name="GetTaskRequest">
+		<xs:complexType>
+			<xs:sequence>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="GetTaskResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="taskDetails" type="tns:TaskDetailsList" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="AddTaskRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="taskDetail" type="tns:TaskDetail" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="AddTaskResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="id" type="xs:long" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="CompletedTaskRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="id" type="xs:long" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="CompletedTaskResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="id" type="xs:long" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="DeleteTaskRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="id" type="xs:long" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="DeleteTaskResponse">
+		<xs:complexType>
+			<xs:sequence> 
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:complexType name="TaskDetail">
+		<xs:sequence>
+			<xs:element name="id" type="xs:long" />
+			<xs:element name="title" type="xs:string" />
+			<xs:element name="description" type="xs:string" />
+			<xs:element name="completed" type="xs:boolean" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="TaskDetailsList">
+		<xs:sequence>
+			<xs:element name="taskDetail" type="tns:TaskDetail" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+</xs:schema>
